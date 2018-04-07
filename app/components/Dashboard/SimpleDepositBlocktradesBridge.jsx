@@ -211,6 +211,7 @@ class SimpleDepositBlocktradesBridge extends React.Component {
         );*/
         if (!receive_address) {
             this.setState({receive_address: null});
+            console.log("SUKAPIZDA");
             requestDepositAddress(this._getDepositObject(props));
         } else {
             this.setState({

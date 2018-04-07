@@ -228,8 +228,10 @@ export function getDepositAddress({coin, account, stateCallback}) {
     };
 
     let body_string = JSON.stringify(body);
-
-    fetch(blockTradesAPIs.BASE_OL + "/simple-api/get-last-address", {
+    let url = coin.startsWith("citadel")
+        ? blockTradesAPIs.BASE_C
+        : blockTradesAPIs.BASE_OL;
+    fetch(url + "/simple-api/get-last-address", {
         method: "POST",
         headers: new Headers({
             Accept: "application/json",
@@ -326,9 +328,12 @@ export function requestDepositAddress({
 
 export function getBackedCoins({allCoins, tradingPairs, backer}) {
     let coins_by_type = {};
-    allCoins.forEach(
-        coin_type => (coins_by_type[coin_type.coinType] = coin_type)
-    );
+    allCoins.forEach(coin_type => {
+        if (!coin_type.walletSymbol) {
+            coin_type.walletSymbol = coin_type.symbol;
+        }
+        coins_by_type[coin_type.coinType] = coin_type;
+    });
 
     let allowed_outputs_by_input = {};
     tradingPairs.forEach(pair => {
@@ -341,6 +346,9 @@ export function getBackedCoins({allCoins, tradingPairs, backer}) {
 
     let blocktradesBackedCoins = [];
     allCoins.forEach(coin_type => {
+        if (!coin_type.walletSymbol) {
+            coin_type.walletSymbol = coin_type.symbol;
+        }
         if (
             coin_type.walletSymbol.startsWith(backer + ".") &&
             coin_type.backingCoinType &&
@@ -356,7 +364,6 @@ export function getBackedCoins({allCoins, tradingPairs, backer}) {
                 allowed_outputs_by_input[coin_type.coinType][
                     coin_type.backingCoinType
                 ];
-
             blocktradesBackedCoins.push({
                 name: coins_by_type[coin_type.backingCoinType].name,
                 intermediateAccount:

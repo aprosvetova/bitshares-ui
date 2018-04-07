@@ -80,6 +80,14 @@ class WithdrawModalNew extends React.Component {
                     selected: false,
                     support_url:
                         "https://wallet.bitshares.org/#/help/gateways/rudex"
+                },
+                CITADEL: {
+                    id: "CITADEL",
+                    name: "CITADEL",
+                    enabled: false,
+                    selected: false,
+                    support_url:
+                        "https://wallet.bitshares.org/#/help/gateways/citadel"
                 }
             },
             withdrawalCurrencyId: "",
@@ -871,6 +879,11 @@ class WithdrawModalNew extends React.Component {
         let minWithdraw = null;
         let maxWithdraw = null;
         if (selectedGateway.toUpperCase() == "OPEN") {
+            minWithdraw =
+                backingAsset.gateFee * 2 ||
+                0 + backingAsset.transactionFee ||
+                0;
+        } else if (selectedGateway.toUpperCase() == "CITADEL") {
             minWithdraw =
                 backingAsset.gateFee * 2 ||
                 0 + backingAsset.transactionFee ||

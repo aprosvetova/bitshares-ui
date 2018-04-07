@@ -3,7 +3,7 @@ export function getIntermediateAccount(symbol, backedCoins) {
     let coin = getBackedCoin(symbol, backedCoins);
     if (!coin) return undefined;
     if (selectedGateway === "RUDEX") return coin.issuerId || coin.issuer;
-    if (selectedGateway === "OPEN")
+    if (selectedGateway === "OPEN" || selectedGateway == "CITADEL")
         return coin.intermediateAccount || coin.issuer;
     else return coin.issuer;
 }

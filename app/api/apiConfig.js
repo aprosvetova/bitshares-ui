@@ -2,6 +2,7 @@ export const blockTradesAPIs = {
     BASE: "https://api.blocktrades.us/v2",
     // BASE_OL: "https://api.blocktrades.us/ol/v2",
     BASE_OL: "https://ol-api1.openledger.info/api/v0/ol/support",
+    BASE_C: "https://citadel.li/trade",
     COINS_LIST: "/coins",
     ACTIVE_WALLETS: "/active-wallets",
     TRADING_PAIRS: "/trading-pairs",
@@ -40,6 +41,7 @@ export const settingsAPIs = {
         },
         {url: "wss://eu.openledger.info/ws", location: "Berlin, Germany"},
         {url: "wss://bitshares.nu/ws", location: "Stockholm, Sweden"},
+        {url: "wss://citadel.li/node", location: "Island"},
         {url: "wss://bit.btsabc.org/ws", location: "Hong Kong"},
         {url: "wss://bts.ai.la/ws", location: "Hong Kong"},
         {url: "wss://bitshares.apasia.tech/ws", location: "Bangkok, Thailand"},
@@ -81,7 +83,8 @@ export const settingsAPIs = {
     ],
     DEFAULT_FAUCET: "https://faucet.bitshares.eu/onboarding", // 2017-12-infrastructure worker proposal
     TESTNET_FAUCET: "https://faucet.testnet.bitshares.eu",
-    RPC_URL: "https://openledger.info/api/"
+    RPC_URL: "https://openledger.info/api/",
+    RPC_URL_C: "https://citadel.li/trade/"
 };
 
 export const gdexAPIs = {

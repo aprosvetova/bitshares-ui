@@ -20,6 +20,14 @@ function _getAvailableGateways(selectedAsset, boolCheck = "depositAllowed") {
                 gatewayStatus.OPEN.enabled = true;
             }
             if (
+                g == "CITADEL" &&
+                selectedAsset == c.backingCoinType &&
+                c[boolCheck] &&
+                c.isAvailable
+            ) {
+                gatewayStatus.CITADEL.enabled = true;
+            }
+            if (
                 g == "RUDEX" &&
                 selectedAsset == c.backingCoin &&
                 c[boolCheck]
@@ -68,6 +76,14 @@ function _getNumberAvailableGateways() {
         this.props.backedCoins.get(g.toUpperCase(), []).find(c => {
             if (
                 g == "OPEN" &&
+                selectedAsset == c.backingCoinType &&
+                c.depositAllowed &&
+                c.isAvailable
+            ) {
+                nAvailableGateways++;
+            }
+            if (
+                g == "CITADEL" &&
                 selectedAsset == c.backingCoinType &&
                 c.depositAllowed &&
                 c.isAvailable
@@ -229,6 +245,11 @@ function gatewaySelector(args) {
                             {gatewayStatus.OPEN.enabled ? (
                                 <option value="OPEN">
                                     {gatewayStatus.OPEN.name}
+                                </option>
+                            ) : null}
+                            {gatewayStatus.CITADEL.enabled ? (
+                                <option value="CITADEL">
+                                    {gatewayStatus.CITADEL.name}
                                 </option>
                             ) : null}
                         </select>

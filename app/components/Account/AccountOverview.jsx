@@ -629,6 +629,11 @@ class AccountOverview extends React.Component {
                                     a => a.backingCoinType === thisAssetName[1]
                                 ) ||
                             !!this.props.backedCoins
+                                .get("CITADEL", [])
+                                .find(
+                                    a => a.backingCoinType === thisAssetName[1]
+                                ) ||
+                            !!this.props.backedCoins
                                 .get("RUDEX", [])
                                 .find(
                                     a => a.backingCoin === thisAssetName[1]

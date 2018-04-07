@@ -1760,6 +1760,9 @@
             "coming_soon": "Coming soon",
             "under_construction": "Under Construction"
         },
+        "citadel": {
+            "support_block": "For support, please contact Citadel at:"
+        },
         "unavailable":
             "The gateway service for this asset is currently down, please try again later",
         "unavailable_bridge":

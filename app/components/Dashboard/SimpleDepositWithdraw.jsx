@@ -110,6 +110,7 @@ class DepositWithdrawContent extends DecimalChecker {
         });
 
         if (!receive_address) {
+            console.log("PIZDALOL");
             requestDepositAddress(this._getDepositObject());
         } else {
             this.setState({
@@ -132,6 +133,7 @@ class DepositWithdrawContent extends DecimalChecker {
             loading: true,
             emptyAddressDeposit: false
         });
+        console.log("PIZDALOL2");
         requestDepositAddress(this._getDepositObject());
     }
 

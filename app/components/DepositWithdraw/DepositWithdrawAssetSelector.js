@@ -30,6 +30,9 @@ class DepositWithdrawAssetSelector extends React.Component {
             ) {
                 gateway = "OPEN";
                 backedCoin = item.backingCoinType;
+            } else if (item.symbol && item.symbol.startsWith("CITADEL")) {
+                gateway = "CITADEL";
+                backedCoin = item.backingCoinType;
             } else if (
                 item.gatewayWallet &&
                 (item.gatewayWallet == "rudex" ||
@@ -66,6 +69,7 @@ class DepositWithdrawAssetSelector extends React.Component {
 
         let coinItems = coinArr
             .concat(props.openLedgerBackedCoins.map(getCoinOption))
+            .concat(props.citadelBackedCoins.map(getCoinOption))
             .concat(props.rudexBackedCoins.map(getCoinOption))
             .concat(props.blockTradesBackedCoins.map(getCoinOption))
             .filter(item => {
@@ -115,6 +119,10 @@ export default connect(DepositWithdrawAssetSelector, {
         return {
             openLedgerBackedCoins: GatewayStore.getState().backedCoins.get(
                 "OPEN",
+                []
+            ),
+            citadelBackedCoins: GatewayStore.getState().backedCoins.get(
+                "CITADEL",
                 []
             ),
             rudexBackedCoins: GatewayStore.getState().backedCoins.get(

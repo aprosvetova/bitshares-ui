@@ -18,6 +18,7 @@ import {
     _onAssetSelected,
     _getCoinToGatewayMapping
 } from "lib/common/assetGatewayMixin";
+import {blockTradesAPIs} from "../../api/apiConfig";
 
 class DepositModalContent extends DecimalChecker {
     constructor() {
@@ -45,6 +46,14 @@ class DepositModalContent extends DecimalChecker {
                     selected: false,
                     support_url:
                         "https://wallet.bitshares.org/#/help/gateways/rudex"
+                },
+                CITADEL: {
+                    id: "CITADEL",
+                    name: "CITADEL",
+                    enabled: false,
+                    selected: false,
+                    support_url:
+                        "https://wallet.bitshares.org/#/help/gateways/citadel"
                 }
             }
         };
@@ -172,6 +181,36 @@ class DepositModalContent extends DecimalChecker {
                 fetchingAddress: false,
                 isOpenledger: false
             });
+        } else if (selectedGateway == "CITADEL") {
+            this.setState({
+                isOpenledger: true
+            });
+            let depositAddress = this.deposit_address_cache.getCachedInputAddress(
+                selectedGateway.toUpperCase(),
+                account,
+                selectedAsset.toLowerCase(),
+                selectedGateway.toLowerCase() +
+                    "." +
+                    selectedAsset.toLowerCase()
+            );
+            if (!depositAddress) {
+                let outputCoinTypeSpike =
+                    selectedAsset.toLowerCase() == "xmr"
+                        ? "monero"
+                        : selectedAsset.toLowerCase();
+                requestDepositAddress({
+                    inputCoinType: selectedAsset.toLowerCase(),
+                    outputCoinType: "citadel." + outputCoinTypeSpike,
+                    outputAddress: account,
+                    stateCallback: this.addDepositAddress,
+                    url: blockTradesAPIs.BASE_C
+                });
+            } else {
+                this.setState({
+                    depositAddress,
+                    fetchingAddress: false
+                });
+            }
         } else {
             console.log(
                 "Withdraw Modal Error: Unknown Gateway " +

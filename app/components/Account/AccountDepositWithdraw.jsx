@@ -8,6 +8,8 @@ import BindToChainState from "../Utility/BindToChainState";
 import BlockTradesGateway from "../DepositWithdraw/BlockTradesGateway";
 import OpenLedgerFiatDepositWithdrawal from "../DepositWithdraw/openledger/OpenLedgerFiatDepositWithdrawal";
 import OpenLedgerFiatTransactionHistory from "../DepositWithdraw/openledger/OpenLedgerFiatTransactionHistory";
+import CitadelFiatDepositWithdrawal from "../DepositWithdraw/citadel/CitadelFiatDepositWithdrawal";
+import CitadelFiatTransactionHistory from "../DepositWithdraw/citadel/CitadelFiatTransactionHistory";
 import BlockTradesBridgeDepositRequest from "../DepositWithdraw/blocktrades/BlockTradesBridgeDepositRequest";
 import HelpContent from "../Utility/HelpContent";
 import AccountStore from "stores/AccountStore";
@@ -38,6 +40,7 @@ class AccountDepositWithdraw extends React.Component {
         this.state = {
             olService: props.viewSettings.get("olService", "gateway"),
             rudexService: props.viewSettings.get("rudexService", "gateway"),
+            citadelService: props.viewSettings.get("citadelService", "gateway"),
             btService: props.viewSettings.get("btService", "bridge"),
             metaService: props.viewSettings.get("metaService", "bridge"),
             activeService: props.viewSettings.get("activeService", 0)
@@ -56,7 +59,12 @@ class AccountDepositWithdraw extends React.Component {
                 nextProps.openLedgerBackedCoins,
                 this.props.openLedgerBackedCoins
             ) ||
+            !utils.are_equal_shallow(
+                nextProps.citadelBackedCoins,
+                this.props.citadelBackedCoins
+            ) ||
             nextState.olService !== this.state.olService ||
+            nextState.citadelService !== this.state.citadelService ||
             nextState.rudexService !== this.state.rudexService ||
             nextState.btService !== this.state.btService ||
             nextState.metaService !== this.state.metaService ||
@@ -75,6 +83,16 @@ class AccountDepositWithdraw extends React.Component {
 
         SettingsActions.changeViewSetting({
             olService: service
+        });
+    }
+
+    toggleCitadelService(service) {
+        this.setState({
+            citadelService: service
+        });
+
+        SettingsActions.changeViewSetting({
+            citadelService: service
         });
     }
 
@@ -119,11 +137,15 @@ class AccountDepositWithdraw extends React.Component {
         });
     }
 
-    renderServices(openLedgerGatewayCoins, rudexGatewayCoins) {
+    renderServices(
+        openLedgerGatewayCoins,
+        citadelGatewayCoins,
+        rudexGatewayCoins
+    ) {
         //let services = ["Openledger (OPEN.X)", "BlockTrades (TRADE.X)", "Transwiser", "BitKapital"];
         let serList = [];
         let {account} = this.props;
-        let {olService, btService, rudexService} = this.state;
+        let {olService, citadelService, btService, rudexService} = this.state;
 
         serList.push({
             name: "Openledger (OPEN.X)",
@@ -159,7 +181,10 @@ class AccountDepositWithdraw extends React.Component {
                                     olService === "fiat" ? "is-active" : ""
                                 }
                             >
-                                <Translate component="a" content="gateway.fiat" />
+                                <Translate
+                                    component="a"
+                                    content="gateway.fiat"
+                                />
                             </li>
                         </ul>
                     </div>
@@ -190,6 +215,81 @@ class AccountDepositWithdraw extends React.Component {
                             />
                             <OpenLedgerFiatTransactionHistory
                                 rpc_url={settingsAPIs.RPC_URL}
+                                account={account}
+                            />
+                        </div>
+                    ) : null}
+                </div>
+            )
+        });
+
+        serList.push({
+            name: "Citadel",
+            template: (
+                <div className="content-block">
+                    <div
+                        className="service-selector"
+                        style={{marginBottom: "2rem"}}
+                    >
+                        <ul className="button-group segmented no-margin">
+                            <li
+                                onClick={this.toggleCitadelService.bind(
+                                    this,
+                                    "gateway"
+                                )}
+                                className={
+                                    citadelService === "gateway"
+                                        ? "is-active"
+                                        : ""
+                                }
+                            >
+                                <a>
+                                    <Translate content="gateway.gateway" />
+                                </a>
+                            </li>
+                            <li
+                                onClick={this.toggleCitadelService.bind(
+                                    this,
+                                    "fiat"
+                                )}
+                                className={
+                                    citadelService === "fiat" ? "is-active" : ""
+                                }
+                            >
+                                <Translate
+                                    component="a"
+                                    content="gateway.fiat"
+                                />
+                            </li>
+                        </ul>
+                    </div>
+
+                    {citadelService === "gateway" &&
+                    citadelGatewayCoins.length ? (
+                        <BlockTradesGateway
+                            account={account}
+                            coins={citadelGatewayCoins}
+                            provider="citadel"
+                        />
+                    ) : null}
+
+                    {citadelService === "fiat" ? (
+                        <div>
+                            <div style={{paddingBottom: 15}}>
+                                <Translate
+                                    component="h5"
+                                    content="gateway.fiat_text"
+                                    unsafe
+                                />
+                            </div>
+
+                            <CitadelFiatDepositWithdrawal
+                                rpc_url={settingsAPIs.RPC_URL_C}
+                                account={account}
+                                issuer_account="citadel-fiat"
+                            />
+                            <CitadelFiatTransactionHistory
+                                rpc_url={settingsAPIs.RPC_URL_C}
                                 account={account}
                             />
                         </div>
@@ -357,8 +457,19 @@ class AccountDepositWithdraw extends React.Component {
                 return 0;
             });
 
+        let citadelGatewayCoins = this.props.citadelBackedCoins
+            .map(coin => {
+                return coin;
+            })
+            .sort((a, b) => {
+                if (a.symbol < b.symbol) return -1;
+                if (a.symbol > b.symbol) return 1;
+                return 0;
+            });
+
         let services = this.renderServices(
             openLedgerGatewayCoins,
+            citadelGatewayCoins,
             rudexGatewayCoins
         );
 
@@ -374,6 +485,7 @@ class AccountDepositWithdraw extends React.Component {
             "Winex",
             "GDEX",
             "OPEN",
+            "CITADEL",
             "RUDEX",
             "TRADE",
             "BITKAPITAL"
@@ -489,6 +601,7 @@ class DepositStoreWrapper extends React.Component {
                 url: rudexAPIs.BASE + rudexAPIs.COINS_LIST
             }); // RuDEX
             GatewayActions.fetchCoins.defer({backer: "TRADE"}); // Blocktrades
+            GatewayActions.fetchCoins.defer({backer: "CITADEL"}); // Citadel
         }
     }
 
@@ -507,6 +620,10 @@ export default connect(DepositStoreWrapper, {
             viewSettings: SettingsStore.getState().viewSettings,
             openLedgerBackedCoins: GatewayStore.getState().backedCoins.get(
                 "OPEN",
+                []
+            ),
+            citadelBackedCoins: GatewayStore.getState().backedCoins.get(
+                "CITADEL",
                 []
             ),
             rudexBackedCoins: GatewayStore.getState().backedCoins.get(

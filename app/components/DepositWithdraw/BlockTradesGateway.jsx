@@ -141,6 +141,11 @@ class BlockTradesGateway extends React.Component {
                 name: coin.intermediateAccount,
                 id: "1.2.96397",
                 support: "https://openledger.io"
+            },
+            citadel: {
+                name: "citadel",
+                id: "1.2.96398",
+                support: "https://citadel.li"
             }
         };
 
@@ -235,7 +240,11 @@ class BlockTradesGateway extends React.Component {
                             />
                             <label className="left-label">Support</label>
                             <div>
-                                <Translate content="gateway.support_block" />
+                                {issuer.name == "citadel" ? (
+                                    <Translate content="gateway.citadel.support_block" />
+                                ) : (
+                                    <Translate content="gateway.support_block" />
+                                )}
                                 <br />
                                 <br />
                                 <a

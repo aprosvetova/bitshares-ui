@@ -25,11 +25,22 @@ class GatewayActions {
                     onGatewayTimeout.bind(null, dispatch, backer),
                     GATEWAY_TIMEOUT
                 );
-
+                if (backer == "CITADEL") {
+                    url = blockTradesAPIs.BASE_C + blockTradesAPIs.COINS_LIST;
+                }
                 Promise.all([
                     fetchCoins(url),
-                    fetchBridgeCoins(blockTradesAPIs.BASE_OL),
-                    getActiveWallets(url)
+                    fetchBridgeCoins(
+                        backer == "OPEN"
+                            ? blockTradesAPIs.BASE_OL
+                            : blockTradesAPIs.BASE_C
+                    ),
+                    getActiveWallets(
+                        backer == "CITADEL"
+                            ? blockTradesAPIs.BASE_C +
+                              blockTradesAPIs.ACTIVE_WALLETS
+                            : url
+                    )
                 ]).then(result => {
                     clearTimeout(fetchCoinsTimeout);
                     delete inProgress["fetchCoins_" + backer];
