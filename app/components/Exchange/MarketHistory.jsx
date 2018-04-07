@@ -206,12 +206,9 @@ class MarketHistory extends React.Component {
             <div className={this.props.className}>
                 <div
                     className="exchange-bordered small-12"
-                    style={{height: 266}}
+                    style={{height: 315}}
                 >
-                    <div
-                        style={this.props.headerStyle}
-                        className="grid-block shrink left-orderbook-header bottom-header"
-                    >
+                    <div className="grid-block shrink left-orderbook-header bottom-header">
                         <div
                             className={cnames(myHistoryClass, {
                                 disabled: isNullAccount
@@ -228,10 +225,10 @@ class MarketHistory extends React.Component {
                         </div>
                     </div>
                     <div className="grid-block shrink left-orderbook-header market-right-padding-only">
-                        <table className="table order-table text-right fixed-table market-right-padding">
+                        <table className="table order-table fixed-table market-right-padding">
                             <thead>
                                 <tr>
-                                    <th>
+                                    <th style={{paddingLeft: 20}}>
                                         <Translate
                                             className="header-sub-title"
                                             content="exchange.price"
@@ -266,9 +263,9 @@ class MarketHistory extends React.Component {
                     <div
                         className="table-container grid-block market-right-padding-only no-overflow"
                         ref="history"
-                        style={{maxHeight: 210, overflow: "hidden"}}
+                        style={{maxHeight: 222, overflow: "hidden"}}
                     >
-                        <table className="table order-table text-right fixed-table market-right-padding">
+                        <table className="table order-table fixed-table market-right-padding">
                             <TransitionWrapper
                                 component="tbody"
                                 transitionName="newrow"

@@ -14,7 +14,7 @@ class TableHeader extends React.Component {
         return (
             <thead>
                 <tr>
-                    <th style={{textAlign: "right"}}>
+                    <th>
                         <Translate content="exchange.price" />
                         <br />
                         {baseSymbol ? (
@@ -25,7 +25,7 @@ class TableHeader extends React.Component {
                             </span>
                         ) : null}
                     </th>
-                    <th style={{textAlign: "right"}}>
+                    <th>
                         <Translate content="transfer.amount" />
                         <br />
                         {quoteSymbol ? (
@@ -34,7 +34,7 @@ class TableHeader extends React.Component {
                             </span>
                         ) : null}
                     </th>
-                    <th style={{textAlign: "right"}}>
+                    <th>
                         <Translate content="transaction.settlement_date" />
                         <br />
                         <span

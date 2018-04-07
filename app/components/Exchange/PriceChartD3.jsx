@@ -171,8 +171,8 @@ class CandleStickChartWithZoomPan extends React.Component {
         calculators.sma = sma()
             .windowSize(parseInt(indicatorSettings["sma"], 10))
             .sourcePath("close")
-            .stroke("#1f77b4")
-            .fill("#1f77b4")
+            .stroke("#012EC5")
+            .fill("#012EC5")
             .merge((d, c) => {
                 d.sma = c;
             })
@@ -198,8 +198,8 @@ class CandleStickChartWithZoomPan extends React.Component {
             .merge((d, c) => {
                 d.smaVolume = c;
             })
-            .stroke("#1f77b4")
-            .fill("#1f77b4")
+            .stroke("#012EC5")
+            .fill("#012EC5")
             .accessor(d => d.smaVolume);
 
         calculators.bb = bollingerBand()
@@ -1065,11 +1065,8 @@ export default class Wrapper extends React.Component {
                 style={{overflow: "visible", width: "100%"}}
             >
                 <CandleStickChartWithZoomPan ref="FitWidth" {...this.props} />
-                <div style={{paddingBottom: 10}}>
-                    <ul
-                        style={{justifyContent: "center"}}
-                        className="market-stats stats bottom-stats"
-                    >
+                <div>
+                    <ul className="market-stats stats bottom-stats">
                         {/* Chart controls */}
                         <li
                             className="stat"
@@ -1078,7 +1075,7 @@ export default class Wrapper extends React.Component {
                             )}
                         >
                             <span>
-                                <span>
+                                <span style={{fontSize: ".9rem"}}>
                                     <Translate content="exchange.zoom" />:
                                 </span>
                                 <span>{zoomOptions}</span>
@@ -1091,7 +1088,7 @@ export default class Wrapper extends React.Component {
                             )}
                         >
                             <span>
-                                <span>
+                                <span style={{fontSize: ".9rem"}}>
                                     <Translate content="exchange.time" />:
                                 </span>
                                 <span>{bucketOptions}</span>

@@ -126,18 +126,14 @@ class OrderBookRowHorizontal extends React.Component {
                 {position === "left" ? (
                     <td>{total}</td>
                 ) : (
-                    <td style={{width: "25%"}} className={integerClass}>
-                        {price}
-                    </td>
+                    <td className={integerClass}>{price}</td>
                 )}
                 <td>{position === "left" ? value : amount}</td>
                 <td>{position === "left" ? amount : value}</td>
                 {position === "right" ? (
                     <td>{total}</td>
                 ) : (
-                    <td style={{width: "25%"}} className={integerClass}>
-                        {price}
-                    </td>
+                    <td className={integerClass}>{price}</td>
                 )}
             </tr>
         );
@@ -440,13 +436,7 @@ class OrderBook extends React.Component {
                                 className="header-sub-title"
                                 content="exchange.total"
                             />
-                            <span className="header-sub-title">
-                                {" "}
-                                (<AssetName
-                                    dataPlace="top"
-                                    name={baseSymbol}
-                                />)
-                            </span>
+                            <span className="header-sub-title" />
                         </th>
                         <th>
                             <span className="header-sub-title">
@@ -500,13 +490,7 @@ class OrderBook extends React.Component {
                                 className="header-sub-title"
                                 content="exchange.total"
                             />
-                            <span className="header-sub-title">
-                                {" "}
-                                (<AssetName
-                                    dataPlace="top"
-                                    name={baseSymbol}
-                                />)
-                            </span>
+                            <span className="header-sub-title" />
                         </th>
                     </tr>
                 </thead>
@@ -580,8 +564,8 @@ class OrderBook extends React.Component {
                                     </span>
                                 </div>
                             </div>
-                            <div style={{paddingRight: "0.6rem"}}>
-                                <table className="table order-table table-hover fixed-table text-right">
+                            <div style={{paddingRight: "10px"}}>
+                                <table className="table order-table table-hover fixed-table">
                                     {!this.state.flip
                                         ? rightHeader
                                         : leftHeader}
@@ -591,14 +575,15 @@ class OrderBook extends React.Component {
                                 className="grid-block"
                                 ref="hor_asks"
                                 style={{
-                                    paddingRight: "0.6rem",
+                                    paddingRight: "10px",
                                     overflow: "hidden",
-                                    maxHeight: 210
+                                    maxHeight: 234,
+                                    paddingBottom: 56
                                 }}
                             >
                                 <table
                                     style={{paddingBottom: 5}}
-                                    className="table order-table table-hover fixed-table text-right no-overflow"
+                                    className="table order-table table-hover fixed-table no-overflow"
                                 >
                                     <TransitionWrapper
                                         ref="askTransition"
@@ -694,7 +679,7 @@ class OrderBook extends React.Component {
                                 </div>
                             </div>
                             <div style={{paddingRight: "0.6rem"}}>
-                                <table className="table order-table table-hover fixed-table text-right">
+                                <table className="table order-table table-hover fixed-table">
                                     {this.state.flip ? rightHeader : leftHeader}
                                 </table>
                             </div>
@@ -702,9 +687,10 @@ class OrderBook extends React.Component {
                                 className="grid-block"
                                 ref="hor_bids"
                                 style={{
-                                    paddingRight: "0.6rem",
+                                    paddingRight: "10px",
                                     overflow: "hidden",
-                                    maxHeight: 210
+                                    maxHeight: 234,
+                                    paddingBottom: 56
                                 }}
                             >
                                 <table

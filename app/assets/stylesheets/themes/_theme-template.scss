@@ -88,6 +88,10 @@
         font-size: 12px;
     }
 
+    .settings-cog {
+        top: 2px;
+    }
+
     .spinner-button-circle .circle-wrapper {
         display: inline-block;
         vertical-align: middle;
@@ -246,6 +250,9 @@
     h5,
     h6 {
         color: $primary-text-color;
+        font-size: 0.9rem;
+        font-weight: normal;
+        text-transform: uppercase;
     }
 
     // copyicons
@@ -257,7 +264,7 @@
     }
 
     .modal {
-        @include color($light-text-color, $account-cells);
+        @include color($light-text-color, $bg-color);
         .modal__highlight {
             color: $info-color;
         }
@@ -360,6 +367,7 @@
 
     .asset-prefix {
         color: $light-text-color !important;
+        font-size: 0.9rem;
     }
 
     .transfer-top {
@@ -374,10 +382,14 @@
 
     .button {
         background: $button-bg-color;
+        background: $bg-color;
+        border: 1px solid $button-bg-color;
+        color: $button-bg-color;
         &:hover,
         &:focus,
         &:active {
-            background-color: lighten($button-bg-color, 4%) !important;
+            color: $bg-color;
+            background-color: $button-bg-color;
         }
         &.outline {
             color: $secondary-text-color;
@@ -442,13 +454,13 @@
     }
 
     .header a.button.create-account {
-        transition: color 0s !important;
-        color: $button-bg-color !important;
+        font-size: 0.9rem;
+        color: $account-dimmed;
         > span > svg > path {
             fill: $button-bg-color;
         }
         &:hover {
-            color: lighten($button-bg-color, 10%) !important;
+            color: $primary-text-color;
             > span > svg > path {
                 fill: lighten($button-bg-color, 10%);
             }
@@ -463,9 +475,6 @@
         div.header-right-lock {
             cursor: pointer;
             padding: 0.9rem 0.25rem;
-            &:hover {
-                background-color: $bg-color;
-            }
         }
 
         div.dropdown-wrapper {
@@ -473,9 +482,6 @@
                 div.hamburger > .icon > svg rect {
                     fill: $bs-blue;
                 }
-            }
-            &:hover {
-                background-color: $bg-color;
             }
         }
 
@@ -553,7 +559,9 @@
     }
 
     .header-container span.icon.lock-unlock > svg > path {
-        fill: $button-bg-color;
+        fill: #fff;
+        width: 1.4rem;
+        height: 1.4rem;
     }
 
     .grp-menu-item button {
@@ -567,7 +575,6 @@
     .grp-menu-item {
         > a,
         .button {
-            color: $primary-text-color !important;
         }
     }
 
@@ -636,7 +643,6 @@
     .table {
         > thead > tr > th {
             border-bottom-color: $dark-text-color;
-            color: $secondary-text-color;
         }
         > tbody > tr > td {
             border-bottom-color: $dark-text-color;
@@ -809,7 +815,7 @@
     input[role="combobox"],
     select[role="combobox"] {
         background-color: $input-background;
-        border: 0;
+        border: 1px solid $border-color;
         color: $primary-text-color;
         &:hover,
         &:focus,
@@ -818,6 +824,25 @@
         }
         &:focus {
             border-color: #aaa;
+        }
+        &:focus::-webkit-input-placeholder {
+            color: $primary-text-color;
+        }
+        &::-webkit-input-placeholder {
+            /* Chrome/Opera/Safari */
+            color: $primary-text-color;
+        }
+        &::-moz-placeholder {
+            /* Firefox 19+ */
+            color: $primary-text-color;
+        }
+        &:-ms-input-placeholder {
+            /* IE 10+ */
+            color: $primary-text-color;
+        }
+        &:-moz-placeholder {
+            /* Firefox 18- */
+            color: $primary-text-color;
         }
     }
 
@@ -930,7 +955,7 @@
     }
 
     .tab-content {
-        background-color: lighten($account-header, 4%);
+        //background-color: lighten($account-header, 4%);
         div.header-selector {
             .filter input {
                 background-color: $bg-color;
@@ -995,8 +1020,8 @@
         > select {
             background-color: lighten($light-panel-bg-color, 12%);
             background: lighten($light-panel-bg-color, 12%)
-                url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20version%3D%221.1%22%20width%3D%2232%22%20height%3D%2224%22%20viewBox%3D%220%200%2032%2024%22%3E%3Cpolygon%20points%3D%220%2C0%2032%2C0%2016%2C24%22%20style%3D%22fill%3A%20black%22%3E%3C/polygon%3E%3C/svg%3E")
-                right 10px center no-repeat;
+                url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iNnB4IiBoZWlnaHQ9IjEycHgiIHZpZXdCb3g9IjAgMCA2IDEyIiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgogICAgPCEtLSBHZW5lcmF0b3I6IFNrZXRjaCA0OC4xICg0NzI1MCkgLSBodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2ggLS0+CiAgICA8dGl0bGU+R3JvdXA8L3RpdGxlPgogICAgPGRlc2M+Q3JlYXRlZCB3aXRoIFNrZXRjaC48L2Rlc2M+CiAgICA8ZGVmcz48L2RlZnM+CiAgICA8ZyBpZD0iQXJ0Ym9hcmQiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0yMC4wMDAwMDAsIC02LjAwMDAwMCkiPgogICAgICAgIDxnIGlkPSJHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAuMDAwMDAwLCA2LjAwMDAwMCkiIGZpbGw9IiM4ODg4ODgiPgogICAgICAgICAgICA8cG9seWdvbiBpZD0iUGF0aC0yLUNvcHkiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMuMDAwMDAwLCA5LjUwMDAwMCkgcm90YXRlKC0xODAuMDAwMDAwKSB0cmFuc2xhdGUoLTMuMDAwMDAwLCAtOS41MDAwMDApICIgcG9pbnRzPSIwIDExLjkzMTM2NzYgMi45Njk2Njk5MiA3IDYgMTIiPjwvcG9seWdvbj4KICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlBhdGgtMiIgcG9pbnRzPSIwIDQuOTMxMzY3NTkgMi45Njk2Njk5MiAwIDYgNSI+PC9wb2x5Z29uPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+")
+                right 5px center no-repeat;
         }
     }
 
@@ -1314,7 +1339,7 @@
 
     .menu-group.primary,
     .menu-group.primary .menu-bar {
-        background-color: $account-background;
+        background-color: transparent;
 
         li {
             > a {
@@ -1326,7 +1351,7 @@
 
             > a:hover,
             > a.active {
-                background-color: $bg-color !important;
+                background-color: transparent !important;
                 color: $primary-text-color;
 
                 .icon > svg > path {
@@ -1347,23 +1372,16 @@
     // Exchange
     .mymarkets-header {
         border-bottom-color: $button-bg-color;
-        &.inactive {
-            border-bottom-color: transparent;
+        &.inactive span {
+            border-bottom-color: #000;
             color: $secondary-text-color;
         }
     }
 
     .exchange-content-header {
         color: $light-text-color;
-        background-color: $header-color !important;
-        border-bottom: 1px solid $button-bg-color;
-        &.bid {
-            border-bottom: 1px solid $bid-color;
-        }
-
-        &.ask {
-            border-bottom: 1px solid $ask-color;
-        }
+        padding: 20px;
+        padding-bottom: 0;
     }
 
     // .block-content-header {
@@ -1419,7 +1437,6 @@
     .order-table .my-order {
         > .vertical-order-table-cell,
         > td {
-            font-weight: bold;
             color: $info-color;
         }
 
@@ -1430,12 +1447,22 @@
         }
     }
 
-    .bid {
-        background-color: $bid-color !important;
+    .button.bid {
+        border-color: $bid-color;
+        color: $bid-color;
+        &:hover {
+            background-color: $bid-color !important;
+            color: $bg-color;
+        }
     }
 
-    .ask {
-        background-color: $ask-color !important;
+    .button.ask {
+        border-color: $ask-color;
+        color: $ask-color;
+        &:hover {
+            background-color: $ask-color !important;
+            color: $bg-color;
+        }
     }
 
     .orderbook-latest-price {
@@ -1502,7 +1529,7 @@
 
     tr.activeMarket,
     tr.activeMarket:hover {
-        color: #4c85d8;
+        color: #012ec5;
         background-color: $header-color;
     }
 
@@ -1517,7 +1544,7 @@
     }
     .stats .stressed-stat {
         padding: 10px 0;
-        font-size: 18px;
+        font-size: 0.9rem;
 
         &.is-call {
             color: $call-color !important;
@@ -1535,8 +1562,8 @@
 
     .stat-text {
         margin-top: 3px;
-        font-size: 11px;
-        color: gray;
+        font-size: 0.7rem;
+        color: $account-dimmed;
     }
 
     .buy-sell-box {
@@ -1569,7 +1596,7 @@
     }
 
     .header-sub-title {
-        font-size: 11px;
+        font-size: 0.7rem;
         color: $light-text-color;
     }
 
@@ -1597,31 +1624,32 @@
     .bucket-option {
         @include button-focus($secondary-text-color, $panel-bg-color, 0);
         &:hover {
-            @include button-focus($primary-text-color, $panel-bg-color, 10);
+            @include button-focus($primary-text-color, $bg-color, 10);
         }
-    }
 
-    .active-bucket {
-        @include button-focus($primary-text-color, $panel-bg-color, 10);
+        &.active-bucket {
+            @include button-focus($primary-text-color, $border-color, 10);
+        }
     }
 
     .indicators,
     li.stat.clickable {
-        color: $secondary-text-color;
-        // &:hover{
-        //   @include button-focus($primary-text-color, $panel-bg-color, 10);
-        // }
+        transition: all 0.3s ease 0s;
+        // color: $secondary-text-color;
+        &:hover {
+            // @include button-focus($secondary-text-color, $bg-color, 10);
+            color: $secondary-text-color;
+        }
     }
 
     .mymarkets-tabs {
         > li {
-            @include button-focus($secondary-text-color, $panel-bg-color, 0);
+            font-size: 0.7rem;
             &:hover {
-                @include button-focus($primary-text-color, $panel-bg-color, 10);
             }
 
             &.active {
-                @include button-focus($primary-text-color, $panel-bg-color, 10);
+                border-bottom: 1px solid #012ec5;
             }
         }
     }
@@ -1909,10 +1937,10 @@
     }
 
     table.table.dashboard-table {
+        border: 1px solid $border-color;
         > thead > tr > th {
-            background-color: $account-header;
             color: $account-primarytext;
-            border-color: $account-border;
+            border-color: $border-color;
         }
         > tbody > tr.dashboard-table--hiddenAccounts {
             > td {
@@ -1925,9 +1953,8 @@
         }
         > tbody > tr {
             > td {
-                background-color: $account-cells;
                 color: $account-primarytext;
-                border-color: $account-border;
+                border-color: $border-color;
                 .icon > svg > path {
                     fill: $account-primarytext;
                 }
@@ -1938,7 +1965,6 @@
             }
             &.total-value {
                 td {
-                    background-color: $account-header;
                 }
                 td:nth-child(n + 2) {
                     color: $account-green;
@@ -1979,15 +2005,21 @@
     .api-status {
         .low {
             color: $bid-color;
-            > svg > path { fill: $bid-color; }
+            > svg > path {
+                fill: $bid-color;
+            }
         }
         .medium {
             color: $call-color;
-            > svg > path { fill: $call-color; }
+            > svg > path {
+                fill: $call-color;
+            }
         }
         .high {
             color: $ask-color;
-            > svg > path { fill: $ask-color; }
+            > svg > path {
+                fill: $ask-color;
+            }
         }
     }
 

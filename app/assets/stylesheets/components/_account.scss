@@ -235,6 +235,7 @@ ul.account-overview {
 }
 
 table.table.dashboard-table {
+    font-size: 0.7rem;
     > thead > tr > th:first-of-type,
     > tbody > tr > td:first-of-type {
         padding-left: 1.5rem;
@@ -247,8 +248,7 @@ table.table.dashboard-table {
     }
     > tbody > tr {
         > td {
-            font-size: 0.875rem;
-            text-align: center;
+            font-size: 0.7rem;
             border: none;
 
             &.worker-name {
@@ -259,9 +259,6 @@ table.table.dashboard-table {
                 > div span.icon > svg {
                     width: 1.75rem;
                     height: 1.75rem;
-                }
-                > div > a {
-                    font-size: 90%;
                 }
             }
 

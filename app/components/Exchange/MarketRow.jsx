@@ -108,6 +108,7 @@ class MarketRow extends React.Component {
                                     base.get("symbol")
                                 )}
                                 key={column.index}
+                                style={{paddingLeft: 3, paddingRight: 0}}
                             >
                                 <Icon className={starClass} name="fi-star" />
                             </td>
@@ -118,7 +119,6 @@ class MarketRow extends React.Component {
                         return (
                             <td
                                 onClick={this._onClick.bind(this, marketID)}
-                                className="text-right"
                                 key={column.index}
                             >
                                 {utils.format_volume(amount)}
@@ -138,7 +138,6 @@ class MarketRow extends React.Component {
                         return (
                             <td
                                 onClick={this._onClick.bind(this, marketID)}
-                                className={"text-right " + changeClass}
                                 key={column.index}
                             >
                                 {change + "%"}
@@ -211,7 +210,6 @@ class MarketRow extends React.Component {
                         return (
                             <td
                                 onClick={this._onClick.bind(this, marketID)}
-                                className="text-right"
                                 key={column.index}
                             >
                                 {utils.format_number(

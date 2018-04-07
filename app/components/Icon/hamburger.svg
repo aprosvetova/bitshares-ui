@@ -1,9 +1,11 @@
-<svg width="32" height="32" version="1.1" viewBox="0 0 8.466666 8.4666669" xmlns="http://www.w3.org/2000/svg">
-    <g transform="translate(15.497 -160.79)">
-        <g transform="matrix(1 0 0 1.0946 0 -15.614)" style="">
-            <rect x="-15.497" y="161.16" width="8.4667" height="1.5249" ry=".43454" style="fill:#fff"/>
-            <rect x="-15.497" y="167.37" width="8.4667" height="1.5249" ry=".43454" style="fill:#fff"/>
-            <rect x="-15.497" y="164.26" width="8.4667" height="1.5249" ry=".43454" style="fill:#fff"/>
-        </g>
-    </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="-281 404.9 32 32" style="enable-background:new -281 404.9 32 32;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<rect x="-281" y="410.9" class="st0" width="32" height="1"/>
+<rect x="-281" y="419.4" class="st0" width="32" height="1"/>
+<rect x="-281" y="427.9" class="st0" width="32" height="1"/>
 </svg>

@@ -28,8 +28,6 @@ import {ChainStore} from "bitsharesjs/es";
 import WithdrawModal from "../Modal/WithdrawModalNew";
 import {List} from "immutable";
 
-var logo = require("assets/logo-ico-blue.png");
-
 // const FlagImage = ({flag, width = 20, height = 20}) => {
 //     return <img height={height} width={width} src={`${__BASE_URL__}language-dropdown/${flag.toUpperCase()}.png`} />;
 // };
@@ -354,6 +352,7 @@ class Header extends React.Component {
 
         let dashboard = (
             <a
+                style={{padding: "18px"}}
                 className={cnames("logo", {
                     active:
                         active === "/" ||
@@ -362,7 +361,10 @@ class Header extends React.Component {
                 })}
                 onClick={this._onNavigate.bind(this, "/dashboard")}
             >
-                <img style={{margin: 0, height: 40}} src={logo} />
+                <img
+                    style={{margin: 0, height: 30}}
+                    src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9Ii0yODEgNDA0LjkgMzIgMzIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgLTI4MSA0MDQuOSAzMiAzMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4NCgkuc3Qwe2ZpbGw6I0ZGRkZGRjt9DQo8L3N0eWxlPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0tMjU0LDQzNC40aC0yMi42bDguOS0yNi44aDQuN0wtMjU0LDQzNC40eiBNLTI3NS4yLDQzMy40aDE5LjhsLTguMy0yNC44aC0zLjNMLTI3NS4yLDQzMy40eiIvPg0KCTwvZz4NCjwvZz4NCjwvc3ZnPg0K"
+                />
             </a>
         );
 
@@ -372,9 +374,12 @@ class Header extends React.Component {
                     <a
                         className="button create-account"
                         onClick={this._onNavigate.bind(this, "/create-account")}
-                        style={{padding: "1rem", border: "none"}}
+                        style={{
+                            padding: "25px 20px",
+                            border: 0,
+                            borderLeft: "1px solid #545456"
+                        }}
                     >
-                        <Icon className="icon-14px" name="user" />{" "}
                         <Translate content="header.create_account" />
                     </a>
                 </ActionSheet.Button>
@@ -453,9 +458,9 @@ class Header extends React.Component {
         }
 
         let hamburger = this.state.dropdownActive ? (
-            <Icon className="icon-14px" name="hamburger-x" />
+            <Icon className="icon-2x" name="hamburger-x" />
         ) : (
-            <Icon className="icon-14px" name="hamburger" />
+            <Icon className="icon-2x" name="hamburger" />
         );
         const hasLocalWallet = !!WalletDb.getWallet();
 
@@ -485,11 +490,6 @@ class Header extends React.Component {
                         active: active.indexOf("settings") !== -1
                     })}
                 >
-                    <Icon
-                        size="1_5x"
-                        style={{position: "relative", top: 0, left: -8}}
-                        name="cogs"
-                    />
                     <Translate
                         className="column-hide-small"
                         component="span"
@@ -854,10 +854,7 @@ class Header extends React.Component {
         return (
             <div className="header-container" style={{minHeight: "64px"}}>
                 <div>
-                    <div
-                        className="header menu-group primary"
-                        style={{flexWrap: "nowrap", justifyContent: "none"}}
-                    >
+                    <div className="header menu-group primary">
                         {__ELECTRON__ ? (
                             <div className="grid-block show-for-medium shrink electron-navigation">
                                 <ul className="menu-bar">
@@ -934,15 +931,6 @@ class Header extends React.Component {
                                                 ) === -1
                                         })}
                                     >
-                                        <Icon
-                                            size="1_5x"
-                                            style={{
-                                                position: "relative",
-                                                top: -2,
-                                                left: -8
-                                            }}
-                                            name="dashboard"
-                                        />
                                         <Translate
                                             className="column-hide-small"
                                             content="header.dashboard"
@@ -967,15 +955,6 @@ class Header extends React.Component {
                                         tradeUrl
                                     )}
                                 >
-                                    <Icon
-                                        size="1_5x"
-                                        style={{
-                                            position: "relative",
-                                            top: -2,
-                                            left: -8
-                                        }}
-                                        name="trade"
-                                    />
                                     <Translate
                                         className="column-hide-small"
                                         component="span"
@@ -1001,15 +980,6 @@ class Header extends React.Component {
                                         "/explorer/blocks"
                                     )}
                                 >
-                                    <Icon
-                                        size="2x"
-                                        style={{
-                                            position: "relative",
-                                            top: 0,
-                                            left: -8
-                                        }}
-                                        name="server"
-                                    />
                                     <Translate
                                         className="column-hide-small"
                                         component="span"
@@ -1023,15 +993,6 @@ class Header extends React.Component {
                                         style={{flexFlow: "row"}}
                                         onClick={this._showSend.bind(this)}
                                     >
-                                        <Icon
-                                            size="1_5x"
-                                            style={{
-                                                position: "relative",
-                                                top: 0,
-                                                left: -8
-                                            }}
-                                            name="transfer"
-                                        />
                                         <span>
                                             <Translate content="header.payments" />
                                         </span>
@@ -1137,9 +1098,6 @@ class Header extends React.Component {
                                     onClick={this._toggleLock.bind(this)}
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="power" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate
                                             content={`header.${
                                                 this.props.locked
@@ -1171,9 +1129,6 @@ class Header extends React.Component {
                                             }`
                                         )}
                                     >
-                                        <div className="table-cell">
-                                            <Icon size="2x" name="user" />
-                                        </div>
                                         <div className="table-cell">
                                             <Translate content="header.create_account" />
                                         </div>
@@ -1211,14 +1166,6 @@ class Header extends React.Component {
                                         ].bind(this)}
                                     >
                                         <div className="table-cell">
-                                            <Icon
-                                                size="2x"
-                                                name={`${
-                                                    isContact ? "minus" : "plus"
-                                                }-circle`}
-                                            />
-                                        </div>
-                                        <div className="table-cell">
                                             <Translate
                                                 content={`account.${
                                                     isContact
@@ -1245,9 +1192,6 @@ class Header extends React.Component {
                                     )}
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="trade" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="header.exchange" />
                                     </div>
                                 </li>
@@ -1267,9 +1211,6 @@ class Header extends React.Component {
                                     )}
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="server" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="header.explorer" />
                                     </div>
                                 </li>
@@ -1284,9 +1225,6 @@ class Header extends React.Component {
                                         "/transfer"
                                     )}
                                 >
-                                    <div className="table-cell">
-                                        <Icon size="2x" name="transfer" />
-                                    </div>
                                     <div className="table-cell">
                                         <Translate content="header.payments_legacy" />
                                     </div>
@@ -1312,9 +1250,6 @@ class Header extends React.Component {
                                     }
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="deposit" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="gateway.deposit" />
                                     </div>
                                 </li>
@@ -1335,9 +1270,6 @@ class Header extends React.Component {
                                             : this._showDeposit.bind(this)
                                     }
                                 >
-                                    <div className="table-cell">
-                                        <Icon size="2x" name="deposit" />
-                                    </div>
                                     <div className="table-cell">
                                         <Translate content="modal.deposit.submit_beta" />
                                     </div>
@@ -1363,9 +1295,6 @@ class Header extends React.Component {
                                     }
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="withdraw" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="modal.withdraw.submit" />
                                     </div>
                                 </li>
@@ -1388,9 +1317,6 @@ class Header extends React.Component {
                                     }
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="withdraw" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="modal.withdraw.submit_beta" />
                                     </div>
                                 </li>
@@ -1410,9 +1336,6 @@ class Header extends React.Component {
                                         "/settings"
                                     )}
                                 >
-                                    <div className="table-cell">
-                                        <Icon size="2x" name="cogs" />
-                                    </div>
                                     <div className="table-cell">
                                         <Translate content="header.settings" />
                                     </div>
@@ -1435,9 +1358,6 @@ class Header extends React.Component {
                                     )}
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="cogs" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="header.settings" />{" "}
                                     </div>
                                 </li>
@@ -1451,9 +1371,6 @@ class Header extends React.Component {
                                         "/news"
                                     )}
                                 >
-                                    <div className="table-cell">
-                                        <Icon size="2x" name="news" />
-                                    </div>
                                     <div className="table-cell">
                                         <Translate content="news.news" />
                                     </div>
@@ -1475,12 +1392,6 @@ class Header extends React.Component {
                                     )}
                                 >
                                     <div className="table-cell">
-                                        <Icon
-                                            size="2x"
-                                            name="question-circle"
-                                        />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="header.help" />
                                     </div>
                                 </li>
@@ -1494,9 +1405,6 @@ class Header extends React.Component {
                                         `/account/${currentAccount}/voting`
                                     )}
                                 >
-                                    <div className="table-cell">
-                                        <Icon size="2x" name="thumbs-up" />
-                                    </div>
                                     <div className="table-cell">
                                         <Translate content="account.voting" />
                                     </div>
@@ -1514,9 +1422,6 @@ class Header extends React.Component {
                                     )}
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="assets" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="explorer.assets.title" />
                                     </div>
                                 </li>
@@ -1533,9 +1438,6 @@ class Header extends React.Component {
                                     )}
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="text" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="account.signedmessages.menuitem" />
                                     </div>
                                 </li>
@@ -1551,9 +1453,6 @@ class Header extends React.Component {
                                         `/account/${currentAccount}/member-stats`
                                     )}
                                 >
-                                    <div className="table-cell">
-                                        <Icon size="2x" name="text" />
-                                    </div>
                                     <div className="table-cell">
                                         <Translate content="account.member.stats" />
                                     </div>
@@ -1572,9 +1471,6 @@ class Header extends React.Component {
                                         )}
                                     >
                                         <div className="table-cell">
-                                            <Icon size="2x" name="hourglass" />
-                                        </div>
-                                        <div className="table-cell">
                                             <Translate content="account.vesting.title" />
                                         </div>
                                     </li>
@@ -1591,9 +1487,6 @@ class Header extends React.Component {
                                     )}
                                 >
                                     <div className="table-cell">
-                                        <Icon size="2x" name="list" />
-                                    </div>
-                                    <div className="table-cell">
                                         <Translate content="account.whitelist.title" />
                                     </div>
                                 </li>
@@ -1609,9 +1502,6 @@ class Header extends React.Component {
                                         `/account/${currentAccount}/permissions`
                                     )}
                                 >
-                                    <div className="table-cell">
-                                        <Icon size="2x" name="warning" />
-                                    </div>
                                     <div className="table-cell">
                                         <Translate content="account.permissions" />
                                     </div>
@@ -1633,9 +1523,6 @@ class Header extends React.Component {
                                             "/accounts"
                                         )}
                                     >
-                                        <div className="table-cell">
-                                            <Icon size="2x" name="folder" />
-                                        </div>
                                         <div className="table-cell">
                                             <Translate content="explorer.accounts.title" />
                                         </div>

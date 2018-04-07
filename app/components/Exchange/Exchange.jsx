@@ -1628,9 +1628,14 @@ class Exchange extends React.Component {
                         )}
                     >
                         <div
-                            className="grid-block vertical no-padding ps-container"
+                            className="grid-block vertical ps-container"
                             id="CenterContent"
                             ref="center"
+                            style={{
+                                padding: "0",
+                                paddingRight: "10px",
+                                marginBottom: -1
+                            }}
                         >
                             {!showDepthChart ? (
                                 <div
@@ -1764,7 +1769,7 @@ class Exchange extends React.Component {
                                 </div>
                             )}
 
-                            <div className="grid-block no-overflow wrap shrink">
+                            <div className="grid-block no-overflow wrap shrink exchanges-bordered-top">
                                 {hasPrediction ? (
                                     <div
                                         className="small-12 no-overflow"

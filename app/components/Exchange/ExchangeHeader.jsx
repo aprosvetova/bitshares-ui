@@ -145,9 +145,7 @@ export default class ExchangeHeader extends React.Component {
                             {!hasPrediction ? (
                                 <div
                                     style={{
-                                        padding: "0 5px",
-                                        fontSize: "18px",
-                                        marginTop: "1px"
+                                        padding: "0 5px"
                                     }}
                                 >
                                     <Link
@@ -240,11 +238,11 @@ export default class ExchangeHeader extends React.Component {
                                     }
                                 >
                                     <span>
-                                        <b className="value">
+                                        <span className="value">
                                             {marketReady
                                                 ? dayChangeWithSign
                                                 : 0}
-                                        </b>
+                                        </span>
                                         <span> %</span>
                                     </span>
                                     <Translate

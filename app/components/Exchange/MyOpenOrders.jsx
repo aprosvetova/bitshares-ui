@@ -568,14 +568,10 @@ class MyOpenOrders extends React.Component {
             baseIsBitAsset || quoteIsBitAsset ? "inherit" : "none";
 
         return (
-            <div
-                style={{marginBottom: "15px"}}
-                key="open_orders"
-                className={this.props.className}
-            >
+            <div key="open_orders" className={this.props.className}>
                 <div
                     className="exchange-bordered small-12"
-                    style={{height: 266}}
+                    style={{height: 315}}
                 >
                     <div className="grid-block shrink left-orderbook-header">
                         <div

@@ -7,22 +7,22 @@ $dark-text-color: #444;
 $primary-text-color: #ffffff;
 $secondary-text-color: darken($primary-text-color, 20%);
 $inactive-text-color: darken($primary-text-color, 30%);
-$link-text-color: #1ec3fa;
-$error-text-color: #ff3950;
+$link-text-color: #ffffff;
+$error-text-color: #db0001;
 
 $settings-select-bg: #3f3f3f;
 $settings-select-color: darken($primary-text-color, 20%);
 $settings-api-node-border-color: #2a2a2a;
 $main-content-margin-block-bg-color: #1e1e1e;
-$bg-color: #2a2a2a;
-$panel-bg-color: #3f3f3f;
-$light-panel-bg-color: #6a6a6a;
-$super-light-panel-bg-color: lighten($light-panel-bg-color, 8%);
+$bg-color: #000;
+$panel-bg-color: #000;
+$light-panel-bg-color: #000;
+$super-light-panel-bg-color: #444;
+$button-bg-color: #012ec5;
 $settings-menu-hover-bg: darken($light-panel-bg-color, 20%);
 $settings-menu-active-bg: darken($light-panel-bg-color, 20%);
-$button-bg-color: #049cce;
 $secondary-button-bg-color: #999999;
-$input-background: lighten($bg-color, 1%);
+$input-background: #000;
 
 $alert-color: $error-text-color;
 $info-color: #a0d3e8;
@@ -31,22 +31,22 @@ $warning-color: #fcab53;
 $fee-color: $secondary-text-color;
 
 // Exchange colors
-$bid-color: #6ba583;
-$ask-color: #e3745b;
+$bid-color: #00ff02;
+$ask-color: #db0001;
 $call-color: #bbbf2b;
-$positive-color: #258a14;
+$positive-color: #00ff02;
 $negative-color: #ff3950;
 $row-accent-color: #3c3c3c;
-$header-color: #484848;
+$header-color: #000;
 
 // Account table view colors
 $account-header: #656565;
 $account-cells: #4b5158;
 $account-green: #7ed321;
 $account-primarytext: white;
-$account-dimmed: #afafaf;
+$account-dimmed: #888;
 $account-border: #323131;
-$account-background: #3f3f3f;
+$account-background: #000;
 $account-tabs-background: #2f2f2f;
 
 $pulsate-green-start: $account-green;

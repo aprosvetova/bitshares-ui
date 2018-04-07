@@ -10,7 +10,7 @@
     .nodes-list .api-status {
         padding-top: 15px;
         padding-bottom: 15px;
-        a { 
+        a {
             float: right;
             position: relative;
             top: 2px;
@@ -21,11 +21,18 @@
 
 .footer {
     @include RobotoRegular;
-    text-transform: lowercase;
-    font-variant: small-caps;
+    border-top: 1px solid $border-color;
+    text-transform: uppercase;
+    background-color: #777;
+    line-height: 36px;
+    vertical-align: middle;
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
     div.footer-status {
         position: absolute;
         right: 0;
+        font-size: 0.7rem;
         > span {
             position: relative;
             top: -9px;
@@ -37,37 +44,35 @@
         > span {
             position: relative;
             top: 7px;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             > .footer-block-title {
-                font-size: 0.85rem;
+                font-size: 0.9rem;
             }
         }
     }
-    background-color: #777;
-    height: 36px;
-    line-height: 36px;
-    vertical-align: middle;
-    color: #fff;
-    padding-left: 1.75rem;
-    padding-right: 1.75rem;
     a {
         text-decoration: underline;
     }
 
     .logo {
-        padding-right: 0.5rem;
+        padding-right: 20px;
         border-right: 1px solid $border-color;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 0.9rem;
         line-height: 2rem;
         .version {
-            font-size: 75%;
+            font-size: 0.7rem;
             vertical-align: baseline;
         }
     }
 
     > div > div:last-of-type {
-        padding-left: 1rem;
+        padding-left: 20px;
         border-left: 1px solid $border-color;
         overflow: hidden;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 }
 
