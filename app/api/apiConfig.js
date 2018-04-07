@@ -28,7 +28,9 @@ export const widechainAPIs = {
 };
 
 export const settingsAPIs = {
-    DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
+    DEFAULT_WS_NODE: __ONION__
+        ? "ws://citadel2miawoaqw.onion/node"
+        : "wss://citadel.li/node",
     WS_NODE_LIST: [
         {
             url: "wss://fake.automatic-selection.com",
@@ -42,6 +44,7 @@ export const settingsAPIs = {
         {url: "wss://eu.openledger.info/ws", location: "Berlin, Germany"},
         {url: "wss://bitshares.nu/ws", location: "Stockholm, Sweden"},
         {url: "wss://citadel.li/node", location: "Island"},
+        {url: "ws://citadel2miawoaqw.onion/node", location: "Citadel Tor"},
         {url: "wss://bit.btsabc.org/ws", location: "Hong Kong"},
         {url: "wss://bts.ai.la/ws", location: "Hong Kong"},
         {url: "wss://bitshares.apasia.tech/ws", location: "Bangkok, Thailand"},
@@ -81,7 +84,9 @@ export const settingsAPIs = {
             location: "TESTNET - BitShares Infrastructure Program"
         }
     ],
-    DEFAULT_FAUCET: "https://faucet.bitshares.eu/onboarding", // 2017-12-infrastructure worker proposal
+    DEFAULT_FAUCET: __ONION__
+        ? "http://citadel2miawoaqw.onion/faucet"
+        : "https://citadel.li/faucet",
     TESTNET_FAUCET: "https://faucet.testnet.bitshares.eu",
     RPC_URL: "https://openledger.info/api/",
     RPC_URL_C: "https://citadel.li/trade/"

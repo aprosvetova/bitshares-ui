@@ -69,7 +69,8 @@ module.exports = function(env) {
                 env.apiUrl || "https://ui.bitshares.eu/api"
             ),
             __TESTNET__: !!env.testnet,
-            __DEPRECATED__: !!env.deprecated
+            __DEPRECATED__: !!env.deprecated,
+            __ONION__: !!env.onion
         }),
         new webpack.ContextReplacementPlugin(
             /moment[\/\\]locale$/,
@@ -82,14 +83,16 @@ module.exports = function(env) {
     ];
 
     if (env.prod) {
-        // PROD OUTPUT PATH
         let outputDir = env.electron
             ? "electron"
-            : env.hash
-                ? !baseUrl
-                    ? "hash-history"
-                    : `hash-history_${baseUrl.replace("/", "")}`
-                : "dist";
+            : env.citadel
+                ? "citadel"
+                : env.hash
+                    ? `hash-history_${baseUrl.replace("/", "")}`
+                    : "dist";
+        if (env.onion) {
+            outputDir += "_onion";
+        }
         outputPath = path.join(root_dir, "build", outputDir);
 
         // DIRECTORY CLEANER

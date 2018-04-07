@@ -34,6 +34,8 @@
         "build-github": "cross-env NODE_ENV=production webpack --env.prod --env.hash --env.deprecated --env.baseUrl='/wallet/'",
         "build-electron": "cross-env NODE_ENV=production webpack --env.prod --env.electron --env.hash",
         "build-electron-nougly": "cross-env NODE_ENV=production webpack --env.prod --env.electron --env.noUgly --env.hash --progress --display-error-details --colors",
+        "build-citadel": "cross-env NODE_ENV=production webpack --env.prod --env.citadel --env.hash --env.baseUrl='/wallet/'",
+        "build-citadel-onion": "cross-env NODE_ENV=production webpack --env.prod --env.citadel --env.hash --env.baseUrl='/wallet/' --env.onion",
         "prepare-electron": "copyfiles -f resources/*.js build/electron/",
         "postbuild-electron": "npm run prepare-electron",
         "postbuild-electron-nougly": "npm run prepare-electron",
