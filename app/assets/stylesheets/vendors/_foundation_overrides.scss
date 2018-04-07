@@ -116,12 +116,7 @@ a {
     // Extend the base selector to get core styles
     @extend %notification;
     // Use the layout mixin to position and structure the notification
-    @include notification-layout(
-        $x: right,
-        / / Can be left,
-        middle,
-        or right $y: bottom / / Can be top or bottom
-    );
+    @include notification-layout($x: right, $y: bottom);
 }
 
 .modal {
