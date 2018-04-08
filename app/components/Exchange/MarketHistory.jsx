@@ -206,7 +206,7 @@ class MarketHistory extends React.Component {
             <div className={this.props.className}>
                 <div
                     className="exchange-bordered small-12"
-                    style={{height: 315}}
+                    style={{height: 335}}
                 >
                     <div className="grid-block shrink left-orderbook-header bottom-header">
                         <div
@@ -263,7 +263,7 @@ class MarketHistory extends React.Component {
                     <div
                         className="table-container grid-block market-right-padding-only no-overflow"
                         ref="history"
-                        style={{maxHeight: 222, overflow: "hidden"}}
+                        style={{maxHeight: 248, overflow: "hidden"}}
                     >
                         <table className="table order-table fixed-table market-right-padding">
                             <TransitionWrapper

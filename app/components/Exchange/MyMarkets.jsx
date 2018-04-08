@@ -843,7 +843,7 @@ class MyMarkets extends React.Component {
                                     MarketsActions.toggleStars();
                                 }}
                             />
-                            <span style={{paddingLeft: "0.4rem"}}>
+                            <span>
                                 <TranslateWithLinks
                                     string="exchange.show_only_star_formatter"
                                     keys={[

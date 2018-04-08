@@ -714,7 +714,7 @@ class Header extends React.Component {
                     className="dropdown header-menu header-submenu"
                     style={{
                         left: -200,
-                        top: 64,
+                        top: 65,
                         maxHeight: !this.state.dropdownActive ? 0 : maxHeight,
                         overflowY: "auto"
                     }}
@@ -852,7 +852,7 @@ class Header extends React.Component {
         };
 
         return (
-            <div className="header-container" style={{minHeight: "64px"}}>
+            <div className="header-container" style={{minHeight: "65px"}}>
                 <div>
                     <div className="header menu-group primary">
                         {__ELECTRON__ ? (

@@ -53,6 +53,9 @@
     #incognito {
         background: $incognito-bg;
     }
+    .account-name {
+        font-size: 0.9rem;
+    }
     .settings-select {
         height: 36px;
         padding: 0 12px;
@@ -646,7 +649,7 @@
         }
         > tbody > tr > td {
             border-bottom-color: $dark-text-color;
-            font-size: 0.875rem;
+            font-size: 0.7rem;
         }
         &.table-hover > tbody > tr:hover > td,
         .table-hover > tbody > tr:hover > th {
@@ -2267,7 +2270,7 @@
             border-bottom: 1px dotted rgb(160, 159, 159);
             display: inline-block;
             text-align: right;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             height: 28px;
             &:hover {
                 background: transparent;
@@ -2281,7 +2284,7 @@
             border: 0;
             color: $primary-text-color;
             border-bottom: 1px dotted rgb(160, 159, 159);
-            font-size: 0.9rem;
+            font-size: 0.7rem;
             height: 28px;
             margin: 0 0 1px;
 
@@ -2364,6 +2367,7 @@
     align-items: center;
     flex-wrap: nowrap;
     height: 64px;
+    border-bottom: 1px solid $border-color;
 
     .menu-bar {
         overflow: visible;
@@ -2379,14 +2383,14 @@
     }
 
     .menu-dropdown-wrapper {
-        height: 65px;
+        height: 64px;
         width: 65px;
         text-align: center;
         border-radius: 0;
 
         .hamburger .icon {
             position: relative;
-            top: 12px;
+            top: 5px;
         }
     }
 
